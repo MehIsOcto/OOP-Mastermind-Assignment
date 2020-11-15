@@ -34,7 +34,17 @@ class PlayOrQuit:
         print('(q)uit')
         self.play = input('')
 
+
+"""Class Initalisations"""
+modeSelect = Game_Mode_Selector()
+playSelect = PlayOrQuit()
+
+
+"""Game Loop"""
 Menu()
 modeSelect.select()
+print('Option =',modeSelect.get_select_value())
+
 playSelect.playquit()
+print('Option =',playSelect.get_play_value())
 
