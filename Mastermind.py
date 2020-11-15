@@ -1,3 +1,6 @@
+import random
+
+
 class Menu:
     print('')
 
@@ -6,6 +9,8 @@ class Menu:
     print('COMP 1046 Object-Oriented Programming')
 
     print('')
+
+
 
 class Game_Mode_Selector:
 
@@ -19,9 +24,29 @@ class Game_Mode_Selector:
         print('     (C) Mastermind44 for 4 Players')
         print('*Enter A, B, or C to continue*')
         self.mode = input('')
+        if self.mode == 'A':
+            pass
+        elif self.mode == 'B':
+            pass
+        elif self.mode == 'B':
+            pass
+        elif self.mode == 'C':
+            pass
+        elif self.mode == 'a':
+            pass
+        elif self.mode == 'b':
+            pass
+        elif self.mode == 'c':
+            pass
+        else:
+            print('Invalid Entry')
+            print('')
+            modeSelect.select()
 
     def get_select_value(self):
         return self.mode
+
+
 
 class PlayOrQuit:
     def __init__(self):
@@ -41,6 +66,7 @@ class PlayOrQuit:
             return ('1')
 
 
+
 class PlayerNames:
     def __init__(self):
         self.p1 = ""
@@ -58,6 +84,29 @@ class PlayerNames:
 
         print('')
 
+    def player2robot(self):
+        self.p2 = 'Supermind'
+
+    def get_player1_value(self):
+        return self.p1
+    
+    def get_player2_value(self):
+        return self.p2
+
+
+
+class MastermindIntro(PlayerNames):
+    def __init__(self):
+        self.p1 = ""
+        self.p2 = ""
+    
+    def intro(self, p1, p2):
+        print('Welcome ' + p1 + ', you need to create a code that consists of four pegs. Each peg can be of the colour (R)ed, B(L)ue, (G)reen, (Y)ellow, (W)hite, or (B)lack. Specify the code by specifying four characters where each character indicates a colour as above. For example, WWRG represents the code White-White-Red-Green. You need to enter the code twice. No character is shown on the screen so ' + p2 + ' cannot see it.')
+
+    def duointro(self, p1, p2):
+        print('Welcome ' + p1 + '. ' + p2 + ' has created a code consisting of four pegs. Each peg can be of the colour (R)ed, B(L)ue, (G)reen, (Y)ellow, (W)hite, or (B)lack.')
+        
+    
 class CodeCreation:
     def __init__(self):
         self.code = ""
@@ -76,7 +125,7 @@ class CodeCreation:
             print('Entries do not match!')
             print('')
             codeSelect.createcode()
-
+    
     def createcoderobot(self):
         for i in range(4):
             new_num = random.randint(0,5)
@@ -93,6 +142,8 @@ class CodeCreation:
             elif new_num == 5:
                 self.code = self.code + 'B'
         print (self.code)
+
+
 
         
     
@@ -180,8 +231,11 @@ class GuessCode(CodeCreation, PlayerNames):
                 self.guessed = 1
 
 
+        
 
-                
+
+
+
 """Class Initalisations"""
 modeSelect = Game_Mode_Selector()
 playSelect = PlayOrQuit()
@@ -190,6 +244,9 @@ player2Select = PlayerNames()
 codeSelect = CodeCreation()
 guessedSelect = GuessCode()
 
+"""Loop Inits"""
+#play = '1'
+#cont = ''
 
 """Game Loop"""
 Menu()
@@ -199,12 +256,33 @@ print('Option =',modeSelect.get_select_value())
 playSelect.playquit()
 print('Option =',playSelect.get_play_value())
 
-player1Select.player1()
-player2Select.player2()
-print('P1 =',player1Select.get_player1_value())
-print('P2 =',player2Select.get_player2_value())
+if modeSelect.get_select_value() == 'A' or modeSelect.get_select_value() == 'a':
+    player1Select.player1()
+    player2Select.player2()
+    print('P1 =',player1Select.get_player1_value())
+    print('P2 =',player2Select.get_player2_value())
 
-MastermindIntro.intro(PlayerNames, player1Select.get_player1_value(),player2Select.get_player2_value())
+    MastermindIntro.intro(PlayerNames, player1Select.get_player1_value(),player2Select.get_player2_value())
 
-codeSelect.createcode()
-print('Code =',codeSelect.get_code_list())
+    codeSelect.createcode()
+    print('Code =',codeSelect.get_code_list())
+
+    guessedSelect = GuessCode.guessing(CodeCreation, codeSelect.get_code_list(), player2Select.get_player2_value())
+
+elif modeSelect.get_select_value() == 'B' or modeSelect.get_select_value() == 'b':
+    player1Select.player1()
+    player2Select.player2robot()
+    print('P1 =',player1Select.get_player1_value())
+    print('P2 =',player2Select.get_player2_value())
+
+    MastermindIntro.duointro(PlayerNames, player1Select.get_player1_value(),player2Select.get_player2_value())
+
+    codeSelect.createcoderobot()
+    print('Code =',codeSelect.get_code_list())
+
+    guessedSelect = GuessCode.guessing(CodeCreation, codeSelect.get_code_list(), player2Select.get_player2_value())
+else:
+    print('Not A or B')
+
+
+print('Goodbye!')
