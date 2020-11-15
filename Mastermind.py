@@ -7,6 +7,23 @@ class Menu:
 
     print('')
 
+class Game_Mode_Selector:
+
+    def __init__(self):
+        self.mode = ""
+
+    def select(self):
+        print('Select which game you want to play:')
+        print('     (A) Original Mastermind for 2 Players')
+        print('     (B) Original Mastermind for 1 Player')
+        print('     (C) Mastermind44 for 4 Players')
+        print('*Enter A, B, or C to continue*')
+        self.mode = input('')
+
+    def get_select_value(self):
+        return self.mode
+
+
 
 Menu()
 
