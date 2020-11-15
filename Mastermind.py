@@ -34,6 +34,29 @@ class PlayOrQuit:
         print('(q)uit')
         self.play = input('')
 
+    def get_play_value(self):
+        if self.play == 'q':
+            return ('0')
+        elif self.play == 'p':
+            return ('1')
+
+
+class PlayerNames:
+    def __init__(self):
+        self.p1 = ""
+        self.p2 = ""
+
+    def player1(self):
+        print('Player 1: What is your name?')
+        self.p1 = input ('')
+
+        print('')
+
+    def player2(self):
+        print('Player 2: What is your name?')
+        self.p2 = input ('')
+
+        print('')
 
 """Class Initalisations"""
 modeSelect = Game_Mode_Selector()
@@ -47,4 +70,9 @@ print('Option =',modeSelect.get_select_value())
 
 playSelect.playquit()
 print('Option =',playSelect.get_play_value())
+
+player1Select.player1()
+player2Select.player2()
+print('P1 =',player1Select.get_player1_value())
+print('P2 =',player2Select.get_player2_value())
 
