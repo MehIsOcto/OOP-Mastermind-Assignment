@@ -23,7 +23,18 @@ class Game_Mode_Selector:
     def get_select_value(self):
         return self.mode
 
-
+class PlayOrQuit:
+    def __init__(self):
+        self.play = ""
+    
+    def playquit(self):
+        print('')
+        print('What would you like to do?')
+        print('(p)lay the game')
+        print('(q)uit')
+        self.play = input('')
 
 Menu()
+modeSelect.select()
+playSelect.playquit()
 
