@@ -77,7 +77,22 @@ class CodeCreation:
             print('')
             codeSelect.createcode()
 
-
+    def createcoderobot(self):
+        for i in range(4):
+            new_num = random.randint(0,5)
+            if new_num == 0:
+                self.code = self.code + 'R'
+            elif new_num == 1:
+                self.code = self.code + 'L'
+            elif new_num == 2:
+                self.code = self.code + 'G'
+            elif new_num == 3:
+                self.code = self.code + 'Y'
+            elif new_num == 4:
+                self.code = self.code + 'W'
+            elif new_num == 5:
+                self.code = self.code + 'B'
+        print (self.code)
 
         
     
@@ -102,3 +117,5 @@ player2Select.player2()
 print('P1 =',player1Select.get_player1_value())
 print('P2 =',player2Select.get_player2_value())
 
+codeSelect.createcode()
+print('Code =',codeSelect.get_code_list())
