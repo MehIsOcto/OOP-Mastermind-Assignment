@@ -58,6 +58,32 @@ class PlayerNames:
 
         print('')
 
+class CodeCreation:
+    def __init__(self):
+        self.code = ""
+
+    def createcode(self):
+        print('Enter the code now:')
+        code1 = input('')
+
+        print('Enter the same code again:')
+        code2 = input('')
+
+        if code1 == code2:
+            self.code = code1
+        else:
+            print('')
+            print('Entries do not match!')
+            print('')
+            codeSelect.createcode()
+
+
+
+        
+    
+    def get_code_list(self):
+        return self.code
+
 """Class Initalisations"""
 modeSelect = Game_Mode_Selector()
 playSelect = PlayOrQuit()
