@@ -176,7 +176,6 @@ class CodeCreation:
                 self.code = self.code + 'W'
             elif new_num == 5:
                 self.code = self.code + 'B'
-        print (self.code)
 
     """ Returns the code, regardless if player or computer generatored """    
     def get_code_list(self):
@@ -197,7 +196,6 @@ class GuessCode(CodeCreation, PlayerNames):
         convertcode = []
         convertcode[:0] = code
 
-        print(convertcode)
         print('')
 
         """ Introduces how to guess code """
@@ -303,11 +301,10 @@ guessedSelect = GuessCode()
 Menu()
 modeSelect.select()
 
-""" These print 'Option =' lines are not a part of the game, but rather exist as a way of helping me debug the game and follow classes...They will be removed before submittion"""
-print('Option =',modeSelect.get_select_value())
+
 
 playSelect.playquit()
-print('Option =',playSelect.get_play_value())
+
 
 
 """ This large loop allows for me to direct the player to the loop corresponding to the slected game mode in Game_Mode_Selector...This calls the get_select_value, which only returns the relevant variable. """
@@ -316,30 +313,24 @@ print('Option =',playSelect.get_play_value())
 if modeSelect.get_select_value() == 'A' or modeSelect.get_select_value() == 'a':
     player1Select.player1()
     player2Select.player2()
-    print('P1 =',player1Select.get_player1_value())
-    print('P2 =',player2Select.get_player2_value())
 
     MastermindIntro.intro(PlayerNames, player1Select.get_player1_value(),player2Select.get_player2_value())
 
-    codeSelect.createcode()
-    print('Code =',codeSelect.get_code_list())
+    codeSelect.createcode() 
 
     guessedSelect = GuessCode.guessing(CodeCreation, codeSelect.get_code_list(), player2Select.get_player2_value())
 
 elif modeSelect.get_select_value() == 'B' or modeSelect.get_select_value() == 'b':
     player1Select.player1()
     player2Select.player2robot()
-    print('P1 =',player1Select.get_player1_value())
-    print('P2 =',player2Select.get_player2_value())
 
     MastermindIntro.duointro(PlayerNames, player1Select.get_player1_value(),player2Select.get_player2_value())
 
     codeSelect.createcoderobot()
-    print('Code =',codeSelect.get_code_list())
 
     guessedSelect = GuessCode.guessing(CodeCreation, codeSelect.get_code_list(), player2Select.get_player2_value())
 else:
-    print('Not A or B')
+    print('Not A or B - Havent implemented 44')
 
 """ When game ends, prints goodbye, signifying end, also acting as a tool to help design game loop """
 print('Goodbye!')
